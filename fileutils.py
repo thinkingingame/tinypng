@@ -21,12 +21,11 @@ def filterDir(file):
     return True
 
 # 遍历目录，进行压缩
-def findImageFile(rootPath):
+def findImageFile(paths):
     result = []
     dirs = []
     # 处理多个文件和目录
     def splitPath():
-        paths = rootPath.split(" ")
         for path in paths:
             if os.path.isfile(path):
                 if filterImageFile(path):

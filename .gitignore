@@ -1,5 +1,5 @@
 *.pyc
-*.log
+log.txt
 /__pycache__
 /build
 /dist

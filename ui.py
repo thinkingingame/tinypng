@@ -31,12 +31,12 @@ def startCompress(rootPath):
     isTaskInProgress = True
     taskStartTime = time.time()
     cleanLogText()
-    paths = rootPath.split(" ")
+    paths = master.tk.splitlist(rootPath)
     writeLog(packLogSendUI("=================================input files=============================="))
     for path in paths:
         writeLog(packLogSendUI(str(path)))
     writeLog(packLogSendUI("=========================================================================="))
-    files = findImageFile(rootPath)
+    files = findImageFile(paths)
     startAsync(files)
 
 def onClose():
