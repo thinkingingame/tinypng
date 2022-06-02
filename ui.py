@@ -99,7 +99,7 @@ def _init_menu():
     helpemenu = Tkinter.Menu(menubar, tearoff=0)
     helpemenu.add_command(label="Contact Us", command=showContact)
     helpemenu.add_command(label="Update", command=showUpdate)
-    menubar.add_cascade(label="Help", menu=helpemenu)
+    # menubar.add_cascade(label="Help", menu=helpemenu)
     master.config(menu=menubar)
 
 def showLog(log):
