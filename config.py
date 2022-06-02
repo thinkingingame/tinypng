@@ -14,6 +14,6 @@ logFile = "./log.txt"
 compressRatio = 0.95
 
 # 窗口属性
-MAIN_WINDOW_TITLE = "SuperPng v0.1"
+MAIN_WINDOW_TITLE = "TinyPng"
 MAIN_WINDOW_SIZE = [800, 400]
 DROP_FRAME_HEIGHT = 400

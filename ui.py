@@ -70,12 +70,6 @@ def _drop(event):
 def showDialog(title, content):
     MessageBox.showinfo(title, content)
 
-def showContact():
-    showDialog(u"提示", u"QQ群:825994338")
-
-def showUpdate():
-    webbrowser.open("https://pan.baidu.com/s/101-a9cD7lpzJiXCWSql8-Q?pwd=spng")
-
 def _init_log_frame():
     global textLog
     textLog = Tkinter.Text(master,font=(u'微软雅黑', 10))
@@ -96,10 +90,6 @@ def _init_menu():
     # filemenu.add_command(label="Restart", command=onRestart)
     menubar.add_cascade(label="File", menu=filemenu)
     menubar.add_cascade(label="Stop", command=onStop)
-    helpemenu = Tkinter.Menu(menubar, tearoff=0)
-    helpemenu.add_command(label="Contact Us", command=showContact)
-    helpemenu.add_command(label="Update", command=showUpdate)
-    # menubar.add_cascade(label="Help", menu=helpemenu)
     master.config(menu=menubar)
 
 def showLog(log):
