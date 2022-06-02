@@ -1,6 +1,6 @@
 # tinypng
-        tinypng是一个图片压缩工具，底层使用[tinypng.com](https://www.tinypng.com)的服务。直接把图片文件或者文件夹拖动到窗口即可压缩，不受图片个数限制。
-        tinypng目前只支持3.x版本的python。只支持windows系统。
+tinypng是一个图片压缩工具，底层使用 [tinypng](https://www.tinypng.com) 的服务。直接把图片文件或者文件夹拖动到窗口即可压缩，不受图片个数限制。
+tinypng目前只支持3.x版本的python。只支持windows系统。
 
 # 使用
 ## 1.tinypng依赖requests,pyyaml,ndg-httpsclient,pyopenssl,      pyasn1,pyinstaller,使用前请自己安装这些库。
