@@ -18,4 +18,4 @@ tinypng目前只支持3.x版本的python。只支持windows系统。
     双击start.bat
 
 # 构建可执行文件：
-    双击install.bat
+    双击build.bat
