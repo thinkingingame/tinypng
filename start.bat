@@ -4,5 +4,4 @@ mshta vbscript:createobject("wscript.shell").run("""%~nx0"" h",0)(window.close)&
 :begin
 REM
 
-python copydep.py
 python main.py
