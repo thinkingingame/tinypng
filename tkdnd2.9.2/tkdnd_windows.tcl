@@ -44,19 +44,21 @@ namespace eval olednd {
        CF_UNICODETEXT          DND_Text  \
        CF_TEXT                 DND_Text  \
        CF_HDROP                DND_Files \
-       FileGroupDescriptor     DND_Files \
-       FileGroupDescriptorW    DND_Files \
+       UniformResourceLocator  DND_URL   \
        CF_HTML                 DND_HTML  \
        {HTML Format}           DND_HTML  \
        CF_RTF                  DND_RTF   \
        CF_RTFTEXT              DND_RTF   \
        {Rich Text Format}      DND_RTF   \
     ]
+    # FileGroupDescriptorW    DND_Files \
+    # FileGroupDescriptor     DND_Files \
 
     ## Mapping from TkDND types to platform types...
     ::tkdnd::generic::initialise_tkdnd_to_platform_types [list \
        DND_Text  {CF_UNICODETEXT CF_TEXT}               \
        DND_Files {CF_HDROP}                             \
+       DND_URL   {UniformResourceLocator UniformResourceLocatorW} \
        DND_HTML  {CF_HTML {HTML Format}}                \
        DND_RTF   {CF_RTF CF_RTFTEXT {Rich Text Format}} \
     ]
@@ -68,13 +70,14 @@ namespace eval olednd {
 #  Command olednd::HandleDragEnter
 # ----------------------------------------------------------------------------
 proc olednd::HandleDragEnter { drop_target typelist actionlist pressedkeys
-                               rootX rootY codelist } {
+                               rootX rootY codelist { data {} } } {
+  ::tkdnd::generic::SetDroppedData $data
   focus $drop_target
   ::tkdnd::generic::HandleEnter $drop_target 0 $typelist \
                                 $codelist $actionlist $pressedkeys
   set action [::tkdnd::generic::HandlePosition $drop_target {} \
                                                $pressedkeys $rootX $rootY]
-  if {$::tkdnd::_auto_update} {update}
+  if {$::tkdnd::_auto_update} {update idletasks}
   return $action
 };# olednd::HandleDragEnter
 
@@ -84,7 +87,7 @@ proc olednd::HandleDragEnter { drop_target typelist actionlist pressedkeys
 proc olednd::HandleDragOver { drop_target pressedkeys rootX rootY } {
   set action [::tkdnd::generic::HandlePosition $drop_target {} \
                                                $pressedkeys $rootX $rootY]
-  if {$::tkdnd::_auto_update} {update}
+  if {$::tkdnd::_auto_update} {update idletasks}
   return $action
 };# olednd::HandleDragOver
 
@@ -93,19 +96,28 @@ proc olednd::HandleDragOver { drop_target pressedkeys rootX rootY } {
 # ----------------------------------------------------------------------------
 proc olednd::HandleDragLeave { drop_target } {
   ::tkdnd::generic::HandleLeave
-  if {$::tkdnd::_auto_update} {update}
+  if {$::tkdnd::_auto_update} {update idletasks}
 };# olednd::HandleDragLeave
 
 # ----------------------------------------------------------------------------
-#  Command olednd::HandleXdndDrop
+#  Command olednd::HandleDrop
 # ----------------------------------------------------------------------------
 proc olednd::HandleDrop { drop_target pressedkeys rootX rootY type data } {
   ::tkdnd::generic::SetDroppedData [normalise_data $type $data]
   set action [::tkdnd::generic::HandleDrop $drop_target {} \
                                            $pressedkeys $rootX $rootY 0]
-  if {$::tkdnd::_auto_update} {update}
+  if {$::tkdnd::_auto_update} {update idletasks}
   return $action
-};# olednd::HandleXdndDrop
+};# olednd::HandleDrop
+
+# ----------------------------------------------------------------------------
+#  Command olednd::GetDataType
+# ----------------------------------------------------------------------------
+proc olednd::GetDataType { drop_target typelist } {
+  foreach {drop_target common_drag_source_types common_drop_target_types} \
+    [::tkdnd::generic::FindWindowWithCommonTypes $drop_target $typelist] {break}
+  lindex $common_drag_source_types 0
+};# olednd::GetDataType
 
 # ----------------------------------------------------------------------------
 #  Command olednd::GetDragSourceCommonTypes

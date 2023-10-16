@@ -3,7 +3,7 @@ tinypng是一个图片压缩工具，底层使用 [tinypng](https://www.tinypng.
 tinypng目前只支持3.x版本的python。只支持windows系统。
 
 # 使用
-## 1.tinypng依赖requests,pyyaml,ndg-httpsclient,pyopenssl,      pyasn1,pyinstaller,使用前请自己安装这些库。
+## 1.tinypng依赖requests,pyyaml,ndg-httpsclient,pyopenssl,pyasn1,pyinstaller,使用前请自己安装这些库。
 
     pip3 install requests
     pip3 install pyyaml
@@ -12,7 +12,7 @@ tinypng目前只支持3.x版本的python。只支持windows系统。
     pip3 install pyasn1
     pip3 install pyinstaller
 
-## 2.复制库tkdnd2.8到python安装目录下的tcl目录。如：C:/Python310/tcl
+## 2.复制库tkdnd2.9.2到python安装目录下的tcl目录。如：C:/Python310/tcl
 
 # 直接运行：
     双击start.bat

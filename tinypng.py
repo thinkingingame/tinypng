@@ -20,7 +20,7 @@ def getRandomIP():
 
 # 上传图片
 def uploadFile(file, logQueue):
-    url = "https://tinypng.com/web/shrink"
+    url = "https://tinypng.com/backend/opt/shrink"
     headers = {
         'X-Forwarded-For' : getRandomIP(),
         "Content-Type": "multipart/form-data",
